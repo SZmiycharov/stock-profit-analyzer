@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from backend.prices_generator.utilities import get_random_number_in_range, write_rows_to_csv
+from backend.common.utilities import get_random_number_in_range, write_rows_to_csv
 
 
 class PricesGenerator:
