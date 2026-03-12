@@ -27,8 +27,8 @@ class TestPricesAnalyser:
 
         result = self.analyzer.find_best_trade(prices)
 
-        assert result.buy.amount == 7
-        assert result.sell.amount == 12
+        assert result.buy_price.amount == 7
+        assert result.sell_price.amount == 12
         assert result.profit_per_share == 5
 
     def test_find_best_trade_returns_earliest_when_profit_is_equal(self):
@@ -41,8 +41,8 @@ class TestPricesAnalyser:
 
         result = self.analyzer.find_best_trade(prices)
 
-        assert result.buy.timestamp == self.create_price(0, 5).timestamp
-        assert result.sell.timestamp == self.create_price(1, 10).timestamp
+        assert result.buy_price.timestamp == self.create_price(0, 5).timestamp
+        assert result.sell_price.timestamp == self.create_price(1, 10).timestamp
         assert result.profit_per_share == 5
 
     def test_find_best_trade_returns_shortest_when_profit_and_buy_time_are_equal(self):
@@ -55,8 +55,8 @@ class TestPricesAnalyser:
 
         result = self.analyzer.find_best_trade(prices)
 
-        assert result.buy.timestamp == self.create_price(0, 5).timestamp
-        assert result.sell.timestamp == self.create_price(1, 10).timestamp
+        assert result.buy_price.timestamp == self.create_price(0, 5).timestamp
+        assert result.sell_price.timestamp == self.create_price(1, 10).timestamp
         assert result.profit_per_share == 5
 
     def test_find_best_trade_works_when_prices_only_fall(self):
@@ -69,8 +69,8 @@ class TestPricesAnalyser:
 
         result = self.analyzer.find_best_trade(prices)
 
-        assert result.buy.amount == 10
-        assert result.sell.amount == 9
+        assert result.buy_price.amount == 10
+        assert result.sell_price.amount == 9
         assert result.profit_per_share == -1
 
     def test_find_best_trade_raises_when_less_than_two_prices(self):

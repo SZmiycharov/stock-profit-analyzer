@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
 
+from backend.common.exceptions import InvalidTimeRangeError
 from backend.models.price import Price
 
 
@@ -11,7 +12,7 @@ class PricesRepository:
 
     def get_prices(self, start, end):
         if start >= end:
-            raise ValueError("Start time must be before end time.")
+            raise InvalidTimeRangeError("Start time must be before end time.")
 
         return [price for price in self.prices if start <= price.timestamp <= end]
 

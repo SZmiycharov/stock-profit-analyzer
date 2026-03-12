@@ -3,7 +3,7 @@ from backend.models.price import Price
 
 
 @dataclass
-class TradeResult:
-    buy: Price
-    sell: Price
+class Trade:
+    buy_price: Price
+    sell_price: Price
     profit_per_share: float
