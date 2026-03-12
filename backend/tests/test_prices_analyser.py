@@ -11,10 +11,10 @@ class TestPricesAnalyser:
         self.analyzer = PricesAnalyser()
         self.start_time = datetime(2026, 3, 1, 10, 0, 0)
 
-    def create_price(self, seconds_offset, price):
+    def create_price(self, seconds_offset, amount):
         return Price(
             timestamp=self.start_time + timedelta(seconds=seconds_offset),
-            amount=price,
+            amount=amount,
         )
 
     def test_find_best_trade_returns_most_profitable_trade(self):

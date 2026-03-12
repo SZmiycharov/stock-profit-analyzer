@@ -22,7 +22,7 @@ class PricesGenerator:
 
             rows.append([row_timestamp.isoformat(), round(row_price, 2)])
 
-        write_rows_to_csv(self.filename, ["timestamp", "price"], rows)
+        write_rows_to_csv(self.filename, ["timestamp", "amount"], rows)
 
 
 if '__main__' == __name__:

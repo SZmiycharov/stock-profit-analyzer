@@ -32,7 +32,7 @@ class TestPricesGenerator:
         filename, header, rows = write_mock.call_args[0]
 
         assert filename == self.filename
-        assert header == ["timestamp", "price"]
+        assert header == ["timestamp", "amount"]
         assert len(rows) == 3
 
     def test_generate_prices_generates_correct_timestamps(self):
@@ -67,7 +67,7 @@ class TestPricesGenerator:
         with patch.object(prices_generator, "write_rows_to_csv") as write_mock:
             generator.generate_prices()
 
-        write_mock.assert_called_once_with(self.filename, ["timestamp", "price"], [])
+        write_mock.assert_called_once_with(self.filename, ["timestamp", "amount"], [])
 
     def test_generate_prices_accumulates_changes(self):
         generator = self.create_generator(3)
