@@ -8,11 +8,12 @@ export default function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   async function handleSubmit(formData) {
     setLoading(true);
     setError("");
-    setResult(null);
+    setHasSubmitted(true);
 
     try {
       const data = await fetchOptimalTrade(formData);
@@ -29,14 +30,37 @@ export default function App() {
       <div className="container">
         <header className="hero">
           <h1>Stock Profit Analyzer</h1>
-          <p>Find the most profitable buy and sell time for a stock in a given period.</p>
+          <p>
+            Find the most profitable buy and sell time for a stock in a given
+            period.
+          </p>
         </header>
 
         <OptimalTradeForm onSubmit={handleSubmit} loading={loading} />
 
-        {error && <div className="error-banner">{error}</div>}
+        {loading && (
+          <div className="info-banner" aria-live="polite">
+            Calculating optimal trade...
+          </div>
+        )}
 
-        <TradeResultCard result={result} />
+        {error && (
+          <div className="error-banner" role="alert">
+            {error}
+          </div>
+        )}
+
+        {!hasSubmitted && !result && !loading && !error && (
+          <div className="empty-state">
+            <h2>Ready to analyze</h2>
+            <p>
+              Enter a start timestamp, end timestamp, and available funds to
+              calculate the best possible trade.
+            </p>
+          </div>
+        )}
+
+        {result && <TradeResultCard result={result} />}
       </div>
     </div>
   );

@@ -42,7 +42,9 @@ body {
 
 .trade-form,
 .result-card,
-.error-banner {
+.error-banner,
+.info-banner,
+.empty-state {
   background: white;
   border-radius: 16px;
   padding: 24px;
@@ -69,6 +71,12 @@ input {
   border: 1px solid #d1d5db;
   border-radius: 10px;
   font-size: 1rem;
+  background: white;
+}
+
+input:disabled {
+  background: #f9fafb;
+  cursor: not-allowed;
 }
 
 button {
@@ -92,6 +100,31 @@ button:disabled {
   color: #b91c1c;
   background: #fee2e2;
   border: 1px solid #fecaca;
+}
+
+.info-banner {
+  color: #1d4ed8;
+  background: #dbeafe;
+  border: 1px solid #bfdbfe;
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  text-align: center;
+}
+
+.empty-state h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #4b5563;
+}
+
+.error-banner {
+  margin-bottom: 20px;
 }
 
 .result-card h2 {
