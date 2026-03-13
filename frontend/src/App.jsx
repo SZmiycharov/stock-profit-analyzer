@@ -19,6 +19,10 @@ export default function App() {
       const data = await fetchOptimalTrade(formData);
       setResult(data);
     } catch (err) {
+      if (err.name === "AbortError") {
+        return;
+      }
+
       setError(err.message || "Unexpected error.");
     } finally {
       setLoading(false);
