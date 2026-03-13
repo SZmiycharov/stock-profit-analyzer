@@ -1,13 +1,28 @@
+import os
 from datetime import datetime
 from functools import lru_cache
 
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 
 from backend.common.exceptions import InvalidTimeRangeError
 from backend.services.prices_analyser import PricesAnalyser
 from backend.services.prices_repository import PricesRepository
 
 app = FastAPI()
+
+origins = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:5173,http://127.0.0.1:5173"
+).split(",")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[origin.strip() for origin in origins],
+    allow_credentials=True,
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
 
 router = APIRouter(prefix="/api/v1")
 
