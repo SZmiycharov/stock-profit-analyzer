@@ -23,7 +23,7 @@ export async function fetchOptimalTrade({
 
   try {
     const response = await fetch(
-      `${API_BASE_URL}/api/v1/optimal_trade?${params.toString()}`,
+      `${API_BASE_URL}/optimal_trade?${params.toString()}`,
       {
         signal: controller.signal,
       }
