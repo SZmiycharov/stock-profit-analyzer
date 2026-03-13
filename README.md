@@ -1,4 +1,5 @@
 # Stock Profit Analyzer
+![CI](https://github.com/SZmiycharov/stock-profit-analyzer/actions/workflows/ci.yml/badge.svg)
 
 A production‑oriented full‑stack web application that calculates the
 **most profitable buy and sell time for a stock** within a given time
